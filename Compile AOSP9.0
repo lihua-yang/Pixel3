@@ -1,0 +1,4 @@
+----准备工作-----
+################
+1.准备AOSP，本来想使用之前Hikey970编译的AOSP版本，但是在https://source.android.com/setup/start/build-numbers#source-code-tags-and-builds查找细分版本号发现，上次repo sync的r8版本
+不能用来编译Pixel 3的镜像，只好再repo sync一个相近的r12版本。        
