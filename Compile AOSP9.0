@@ -30,4 +30,7 @@ wget https://dl.google.com/dl/android/aosp/qcom-blueline-pq1a.181205.006-e364e5c
 
 
 5.下载内核代码
+mkdir android-kernel     
+cd android-kernel     
 repo init -u https://aosp.tuna.tsinghua.edu.cn/kernel/manifest -b android-msm-crosshatch-4.9-pie-qpr2    
+repo sync -j32    
