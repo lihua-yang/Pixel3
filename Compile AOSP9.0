@@ -1,5 +1,12 @@
 ######准备工作#####
 Pixel3 代号blueline，编译配置lunch aosp_bluebline-userdebug，内核代码选择android-msm-crosshatch           
+
+pixel3解锁    
+在手机system-->build version点击7下进入developer模式，OEM也要解锁    
+手机进入BootLoader：adb reboot bootloader     
+解锁命令：fastboot flashing unlock    
+利用音量上下键和开机键选择对应选项来解锁      
+
 1.准备AOSP，本来想使用之前Hikey970编译的AOSP版本，但是在https://source.android.com/setup/start/build-numbers#source-code-tags-and-builds查找细分版本号发现，上次repo sync的r8版本
 不能用来编译Pixel 3的镜像，只好再repo sync一个相近的r21版本。      
 同时在github上找到前人的教程并学习：https://github.com/shallin123/Android9.0-pixel-3         
