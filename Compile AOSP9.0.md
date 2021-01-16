@@ -178,3 +178,10 @@ static int check_modinfo(struct module *mod, struct load_info *info, int flags)
                 //return -ENOEXEC;
         }
 ```
+
+报错1：     
+```
+/mnt/pixel3/pixel3-kernel/msm/build# ./build.sh 
+= Set default KERNEL_DIR: /mnt/pixel3/pixel3-kernel/msm
+/mnt/pixel3/pixel3-kernel/msm/build/build.config: line 5: /mnt/pixel3/pixel3-kernel/msm/build/private/msm-google/build.config.common.clang: No such file or directory
+```
