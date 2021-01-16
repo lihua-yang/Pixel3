@@ -3,7 +3,7 @@
 Pixel3 代号blueline，编译配置lunch aosp_bluebline-userdebug，内核代码选择android-msm-crosshatch           
 
 pixel3解锁
-==========
+------
 在手机system-->build version点击7下进入developer模式，OEM也要解锁    
 手机进入BootLoader：adb reboot bootloader     
 解锁命令：fastboot flashing unlock    
@@ -22,7 +22,8 @@ repo sync -j32
 //PD1A.180720.031	android-9.0.0_r12	Pie	Pixel 3 XL、Pixel 3	2018-09-05   
 PQ1A.181205.006	android-9.0.0_r21	Pie	Pixel 3 XL、Pixel 3	2018-12-05    
 
-下载驱动    
+下载驱动  
+--------
 https://developers.google.com/android/drivers     
 Pixel 3 binaries for Android 9.0.0 (PQ1A.181205.006)    
 Hardware Component 	Company 	Download 	SHA-256 Checksum    
