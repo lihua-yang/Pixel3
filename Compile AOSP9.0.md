@@ -1,5 +1,5 @@
 准备工作
-=========
+======
 Pixel3 代号blueline，编译配置lunch aosp_bluebline-userdebug，内核代码选择android-msm-crosshatch           
 
 pixel3解锁
