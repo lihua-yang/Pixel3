@@ -25,7 +25,8 @@ repo sync has finished successfully.
 --------
 source build/envsetup.sh     
 lunch aosp_blueline-userdebug   
-log:    
+log:  
+```
 root@tan-PowerEdge-R730:/mnt/pixel3/aosp# lunch aosp_blueline-userdebug     
 
 ============================================    
@@ -51,7 +52,17 @@ HOST_BUILD_TYPE=release
 BUILD_ID=PQ1A.181205.006   
 OUT_DIR=out    
 PRODUCT_SOONG_NAMESPACES=device/google/crosshatch/pixelstats device/google/crosshatch/usb device/google/crosshatch/health hardware/google/av hardware/google/interfaces hardware/qcom/sdm845 vendor/qcom/sdm845     
+```
+make -j32    
+```
+Copying resources from program jar [/mnt/pixel3/aosp/out/target/common/obj/APPS/messaging_intermediates/classes.jar]
+[ 99% 105415/105439] Target Java: out/target/common/obj/APPS/Dialer_intermediates/classes-full-debug.jar
+Note: Generating a Provider for com.android.dialer.glidephotomanager.impl.GlidePhotoManagerImpl. Prefer to run the dagger processor over that class instead.
+Note: [1] Wrote GeneratedAppGlideModule with: []
+[100% 105439/105439] Target vbmeta image: out/target/product/blueline/vbmeta.img
 
+#### build completed successfully (01:46:12 (hh:mm:ss)) ####
+```
 
 
 2.下载对应版本的驱动文件      
@@ -76,7 +87,8 @@ wget https://dl.google.com/dl/android/aosp/qcom-blueline-pq1a.181205.006-e364e5c
 
 
 
-5.下载内核代码    
+5.下载内核代码  
+-------
 mkdir pixel3-kernel     
 cd pixel3-kernel     
 repo init -u https://aosp.tuna.tsinghua.edu.cn/kernel/manifest -b android-msm-crosshatch-4.9-pie-qpr2    
@@ -87,4 +99,22 @@ repo sync -j32
 git clone https://aosp.tuna.tsinghua.edu.cn/kernel/msm.git     
 cd msm     
 git checkout remotes/origin/android-msm-crosshatch-4.9-pie-qpr2    
+
+6.编译内核
+--------
+cd /mnt/pixel3/pixel3-kernel/msm/arch/arm64/configs     
+修改b1c1_defconfig     
+关于MODULE的定义   
+```
+CONFIG_MODULES=y
+CONFIG_MODULE_UNLOAD=y
+CONFIG_MODULE_FORCE_UNLOAD=y
+#change by ylh CONFIG_MODVERSIONS=y
+CONFIG_MODULE_SIG=y
+#change by ylh
+#CONFIG_MODULE_SIG_ALL is not set
+#CONFIG_MODULE_SIG_FORCE=y
+#CONFIG_MODULE_SIG_SHA512=y
+#CONFIG_BLK_DEV_BSG is not set
+```
 
