@@ -15,7 +15,44 @@ pixel3解锁
 //repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-9.0.0_r21 --no-repo-verify --repo-branch=stable    
 repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-9.0.0_r21    
 //清华的源不可用，换用中科院的源ustc    
+repo init -u git://mirrors.ustc.edu.cn/aosp/platform/manifest -b android-9.0.0_r21     
 repo sync -j32     
+log：
+Checking out projects: 100% (678/678), done.
+repo sync has finished successfully.
+
+编译aosp
+--------
+source build/envsetup.sh     
+lunch aosp_blueline-userdebug   
+log:    
+root@tan-PowerEdge-R730:/mnt/pixel3/aosp# lunch aosp_blueline-userdebug     
+
+============================================    
+PLATFORM_VERSION_CODENAME=REL   
+PLATFORM_VERSION=9    
+TARGET_PRODUCT=aosp_blueline    
+TARGET_BUILD_VARIANT=userdebug   
+TARGET_BUILD_TYPE=release   
+TARGET_ARCH=arm64    
+TARGET_ARCH_VARIANT=armv8-2a    
+TARGET_CPU_VARIANT=cortex-a75    
+TARGET_2ND_ARCH=arm    
+TARGET_2ND_ARCH_VARIANT=armv8-a    
+TARGET_2ND_CPU_VARIANT=cortex-a75    
+HOST_ARCH=x86_64   
+HOST_2ND_ARCH=x86    
+HOST_OS=linux    
+HOST_OS_EXTRA=Linux-4.13.0-x86_64-Ubuntu-16.04.7-LTS    
+HOST_CROSS_OS=windows   
+HOST_CROSS_ARCH=x86    
+HOST_CROSS_2ND_ARCH=x86_64    
+HOST_BUILD_TYPE=release    
+BUILD_ID=PQ1A.181205.006   
+OUT_DIR=out    
+PRODUCT_SOONG_NAMESPACES=device/google/crosshatch/pixelstats device/google/crosshatch/usb device/google/crosshatch/health hardware/google/av hardware/google/interfaces hardware/qcom/sdm845 vendor/qcom/sdm845     
+
+
 
 2.下载对应版本的驱动文件      
 我下载的版本是：       
@@ -39,10 +76,15 @@ wget https://dl.google.com/dl/android/aosp/qcom-blueline-pq1a.181205.006-e364e5c
 
 
 
-5.下载内核代码
+5.下载内核代码    
 mkdir pixel3-kernel     
 cd pixel3-kernel     
 repo init -u https://aosp.tuna.tsinghua.edu.cn/kernel/manifest -b android-msm-crosshatch-4.9-pie-qpr2    
 repo sync -j32    
-我的做法是，在https://android.googlesource.com/kernel/msm-extra/+refs下载android-msm-crosshatch-4.9-pie-qpr2压缩包，并用xftp传输到大机房机器上     
+我的做法是，在https://android.googlesource.com/kernel/msm-extra/+refs 下载android-msm-crosshatch-4.9-pie-qpr2压缩包，并用xftp传输到大机房机器上    
+上面这条失败了，换了一个方法    
+参考该网站 https://blog.csdn.net/zz531987464/article/details/94163954      
+git clone https://aosp.tuna.tsinghua.edu.cn/kernel/msm.git     
+cd msm     
+git checkout remotes/origin/android-msm-crosshatch-4.9-pie-qpr2    
 
