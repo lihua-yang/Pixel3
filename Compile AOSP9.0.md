@@ -25,6 +25,8 @@ Checking out projects: 100% (678/678), done.
 repo sync has finished successfully.
 ```
 
+again：
+repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-9.0.0_r37 --no-repo-verify --repo-branch=stable   
 3.编译aosp
 --------
 source build/envsetup.sh     
@@ -121,6 +123,11 @@ repo sync -j32
 git clone https://aosp.tuna.tsinghua.edu.cn/kernel/msm.git     
 cd msm     
 git checkout remotes/origin/android-msm-crosshatch-4.9-pie-qpr2    
+该方法编译出错，尝试官网构建内核的方法       
+https://source.android.com/setup/build/building-kernels      
+Pixel 3 (blueline)         AOSP 树中的二进制文件路径              Repo 分支       
+Pixel 3 XL (crosshatch)	   device/google/crosshatch-kernel	   android-msm-crosshatch-4.9-android11     
+git checkout remotes/origin/android-msm-crosshatch-4.9-android11
 
 6.编译内核
 --------
