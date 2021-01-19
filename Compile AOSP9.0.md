@@ -372,3 +372,32 @@ lunch aosp_blueline-userdebug
 make bootimage    
 fastboot flash boot boot.img    
 adb shell后 cat /proc/version    
+
+报错2：
+```
+root@ca01:/mnt/sdb/android-kernel/msm# make
+arch/arm64/Makefile:68: CROSS_COMPILE_ARM32 not defined or empty, the compat vDSO will not be built
+```
+将error改为warning    
+
+报错3：
+```
+root@ca01:/mnt/sdb/android-kernel/msm# make
+arch/arm64/Makefile:68: CROSS_COMPILE_ARM32 not defined or empty, the compat vDSO will not be built
+  CHK     include/config/kernel.release
+Cannot use CONFIG_LTO_CLANG: requires clang 5.0 or later
+make: *** [Makefile:1196: prepare-compiler-check] Error 1
+```
+将prebuilts下/bin文件夹下的交叉编译工具拷贝到msm下    
+export ARCH=arm64    
+root@ca01:/mnt/sdb/android-kernel/msm# export CROSS_COMPILE=aarch64-linux-android-    
+root@ca01:/mnt/sdb/android-kernel/msm# export CROSS_COMPILE_ARM32=./bin/arm-linux-androideabi-    
+root@ca01:/mnt/sdb/android-kernel/msm# make b1c1_defconfig   
+
+
+
+报错4：
+```
+/mnt/sdb/android-kernel/build/_setup_env.sh: line 46: realpath: command not found
+```
+回到上一层repo sync的目录，而不是msm那一层执行build/build.sh     
