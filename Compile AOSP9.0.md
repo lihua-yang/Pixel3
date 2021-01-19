@@ -122,6 +122,7 @@ Warning: request a ThreadPool with 1 threads, but LLVM_ENABLE_THREADS has been t
 
 #### build completed successfully (02:25:34 (hh:mm:ss)) ####
 ```
+
 这一步很重要，也要做！
 下面这步不做，怀疑是仅供刷机使用     
 3.2 下载对应版本的驱动文件   
@@ -138,7 +139,8 @@ GPS, Audio, Camera, Gestures, Graphics, DRM, Video, Sensors 	Qualcomm 	Link 	9db
 所以     
 wget https://dl.google.com/dl/android/aosp/google_devices-blueline-pq1a.181205.006-5a3e2737.tgz     
 wget https://dl.google.com/dl/android/aosp/qcom-blueline-pq1a.181205.006-e364e5c0.tgz             
-并用tar zxvf 解压并执行解压出来的两个sh文件     
+并用tar zxvf 解压并执行解压出来的两个sh文件    
+
 again:
 ------
 总觉得缺少一些东西，所以将这一步也加上    
