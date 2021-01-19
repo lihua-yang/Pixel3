@@ -189,7 +189,7 @@ FAILED (remote: Failed to write to partition Not Found)
 finished. total time: 2.876s
 ```
 
-again-again（加上上述两个驱动后重新刷录镜像）：
+again-again（加上上述两个驱动后重新编译并刷录镜像）：
 ```
 root@ca01:/mnt/sdb/aosp-pixels/out/target/product/blueline# fastboot flashall -w
 --------------------------------------------
