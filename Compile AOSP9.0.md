@@ -46,8 +46,6 @@ lunch aosp_blueline-userdebug
 log:  
 ```
 root@tan-PowerEdge-R730:/mnt/pixel3/aosp# lunch aosp_blueline-userdebug     
-
-
 ============================================    
 PLATFORM_VERSION_CODENAME=REL   
 PLATFORM_VERSION=9    
@@ -180,6 +178,7 @@ repo sync -j32
 git clone https://aosp.tuna.tsinghua.edu.cn/kernel/msm.git     
 cd msm     
 git checkout remotes/origin/android-msm-crosshatch-4.9-pie-qpr2  
+
 again：
 -----
 该方法编译出错，尝试官网构建内核的方法       
