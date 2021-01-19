@@ -27,6 +27,7 @@ repo sync has finished successfully.
 ```
 
 again：
+-----
 repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-9.0.0_r37 --no-repo-verify --repo-branch=stable    
 失败
 repo init -u git://mirrors.ustc.edu.cn/aosp/platform/manifest -b android-9.0.0_r37     
@@ -37,6 +38,7 @@ Checking out projects: 100% (677/677), done.
 repo sync has finished successfully.
 ```
 
+
 3.编译aosp
 --------
 source build/envsetup.sh     
@@ -44,6 +46,7 @@ lunch aosp_blueline-userdebug
 log:  
 ```
 root@tan-PowerEdge-R730:/mnt/pixel3/aosp# lunch aosp_blueline-userdebug     
+
 
 ============================================    
 PLATFORM_VERSION_CODENAME=REL   
@@ -83,6 +86,45 @@ Note: [1] Wrote GeneratedAppGlideModule with: []
 adb reboot bootloader    
 fastboot flashall -w    
 
+again:
+------
+```root@ca01:/mnt/sdb/aosp-pixels# lunch aosp_blueline-userdebug
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=9
+TARGET_PRODUCT=aosp_blueline
+TARGET_BUILD_VARIANT=userdebug
+TARGET_BUILD_TYPE=release
+TARGET_ARCH=arm64
+TARGET_ARCH_VARIANT=armv8-2a
+TARGET_CPU_VARIANT=cortex-a75
+TARGET_2ND_ARCH=arm
+TARGET_2ND_ARCH_VARIANT=armv8-a
+TARGET_2ND_CPU_VARIANT=cortex-a75
+HOST_ARCH=x86_64
+HOST_2ND_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-3.11.10-x86_64-Ubuntu-14.04.5-LTS
+HOST_CROSS_OS=windows
+HOST_CROSS_ARCH=x86
+HOST_CROSS_2ND_ARCH=x86_64
+HOST_BUILD_TYPE=release
+BUILD_ID=PQ3A.190505.002
+OUT_DIR=out
+PRODUCT_SOONG_NAMESPACES=device/google/crosshatch hardware/google/av hardware/google/interfaces hardware/qcom/sdm845 vendor/qcom/sdm845
+============================================
+```
+make -j32    
+```
+[ 99% 105474/105503] //art/compiler:libart-compiler link libart-compiler.so [arm]
+Warning: request a ThreadPool with 1 threads, but LLVM_ENABLE_THREADS has been turned off
+[ 99% 105487/105503] //art/dex2oat:dex2oat link dex2oat [arm]
+Warning: request a ThreadPool with 1 threads, but LLVM_ENABLE_THREADS has been turned off
+[100% 105503/105503] Target vbmeta image: out/target/product/blueline/vbmeta.img
+
+#### build completed successfully (02:25:34 (hh:mm:ss)) ####
+```
+
 下面这步不做，怀疑是仅供刷机使用     
 2.下载对应版本的驱动文件      
 我下载的版本是：       
@@ -119,7 +161,12 @@ export ANDROID_PRODUCT_OUT=/mnt/pixel3/aosp/out/target/product/blueline
 ```
 FAILED (remote: 'Partition should be flashed in fastbootd')
 ```
-初步推测与fastboot版本相关     
+初步推测与fastboot版本相关，与淘宝店家商量，获得原始版本的全套镜像，又因为与大机房上Hikey970与Nexus9的编译刷录想冲突，将Pixel3的编译刷录转移到ca01机器上。    
+
+again：
+-----
+
+
 
 5.下载内核代码  
 -------
@@ -132,13 +179,15 @@ repo sync -j32
 参考该网站 https://blog.csdn.net/zz531987464/article/details/94163954      
 git clone https://aosp.tuna.tsinghua.edu.cn/kernel/msm.git     
 cd msm     
-git checkout remotes/origin/android-msm-crosshatch-4.9-pie-qpr2    
+git checkout remotes/origin/android-msm-crosshatch-4.9-pie-qpr2  
+again：
+-----
 该方法编译出错，尝试官网构建内核的方法       
 https://source.android.com/setup/build/building-kernels      
 Pixel 3 (blueline)         AOSP 树中的二进制文件路径              Repo 分支       
 Pixel 3 XL (crosshatch)	   device/google/crosshatch-kernel	   android-msm-crosshatch-4.9-android11     
 git checkout remotes/origin/android-msm-crosshatch-4.9-android11    
-没有build/build.sh, repo sync android-msm-crosshatch-4.9-pie-qpr2    
+发现没有build/build.sh, repo sync android-msm-crosshatch-4.9-pie-qpr2    
 ```
 Checking out files: 100% (16166/16166), done.
 Checking out projects:  40% (4/10) platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-and
@@ -148,7 +197,9 @@ repo sync has finished successfully.
 ```
 sync后有ipc文件夹一样，且其中的文件和Makefile文件不一样，将其他文件夹复制到msm文件夹下，此时msm中 git branch为android-msm-crosshatch-4.9-pie-qpr2    
 还有build.config文件一样，不做拷贝（Makefile）    
-还有include文件夹一样，同上     
+还有include文件夹一样，同上   
+先尝试一次与Hikey970中类似的编译方法：make b1c1_defconfig    
+make 
 
 6.编译内核
 --------
@@ -170,9 +221,7 @@ CONFIG_MODULE_SIG=y
 #CONFIG_BLK_DEV_BSG is not set
 ```
 对build/build.sh编译脚本做如下修改，不然编译会报错。 
-make b1c1_defconfig    
-make    
-
+   
 
 修改/mnt/pixel3/pixel3-kernel/msm/build/build.sh    
 在这之前msm中没有build文件夹，只好repo sync 一次    
