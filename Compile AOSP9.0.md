@@ -124,7 +124,7 @@ Warning: request a ThreadPool with 1 threads, but LLVM_ENABLE_THREADS has been t
 ```
 
 这一步很重要，也要做！
-下面这步不做，怀疑是仅供刷机使用     
+
 3.2 下载对应版本的驱动文件   
 -----
 我下载的版本是：       
