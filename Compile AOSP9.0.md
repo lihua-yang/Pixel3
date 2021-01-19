@@ -27,7 +27,16 @@ repo sync has finished successfully.
 ```
 
 again：
-repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-9.0.0_r37 --no-repo-verify --repo-branch=stable   
+repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-9.0.0_r37 --no-repo-verify --repo-branch=stable    
+失败
+repo init -u git://mirrors.ustc.edu.cn/aosp/platform/manifest -b android-9.0.0_r37     
+repo sync
+```
+Checking out projects:  90% (613/677) platform/prebuilts/r8Checking out files:   0% (18/4089Checking out files: 100% (4089/4089), done.
+Checking out projects: 100% (677/677), done.
+repo sync has finished successfully.
+```
+
 3.编译aosp
 --------
 source build/envsetup.sh     
@@ -128,7 +137,18 @@ git checkout remotes/origin/android-msm-crosshatch-4.9-pie-qpr2
 https://source.android.com/setup/build/building-kernels      
 Pixel 3 (blueline)         AOSP 树中的二进制文件路径              Repo 分支       
 Pixel 3 XL (crosshatch)	   device/google/crosshatch-kernel	   android-msm-crosshatch-4.9-android11     
-git checkout remotes/origin/android-msm-crosshatch-4.9-android11
+git checkout remotes/origin/android-msm-crosshatch-4.9-android11    
+没有build/build.sh, repo sync android-msm-crosshatch-4.9-pie-qpr2    
+```
+Checking out files: 100% (16166/16166), done.
+Checking out projects:  40% (4/10) platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-and
+Checking out projects:  50% (5/10) platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi
+Checking out projects: 100% (10/10), done.
+repo sync has finished successfully.
+```
+sync后有ipc文件夹一样，且其中的文件和Makefile文件不一样，将其他文件夹复制到msm文件夹下，此时msm中 git branch为android-msm-crosshatch-4.9-pie-qpr2    
+还有build.config文件一样，不做拷贝（Makefile）    
+还有include文件夹一样，同上     
 
 6.编译内核
 --------
