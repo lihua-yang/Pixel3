@@ -12,7 +12,8 @@ Pixel3 代号blueline，编译配置lunch aosp_bluebline-userdebug，内核代�
 2.准备AOSP
 --------
 本来想使用之前Hikey970编译的AOSP版本，但是在https://source.android.com/setup/start/build-numbers#source-code-tags-and-builds 查找细分版本号发现，上次repo sync的r8版本不能用来编译Pixel 3的镜像，只好再repo sync一个相近的r21版本。       
-同时在github上找到前人的教程并学习：https://github.com/shallin123/Android9.0-pixel-3          
+同时在github上找到前人的教程并学习：https://github.com/shallin123/Android9.0-pixel-3  
+可供参考的pixel XL编译经验： https://blog.csdn.net/zz531987464/article/details/94163954    
 
 //repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-9.0.0_r21 --no-repo-verify --repo-branch=stable    
 repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-9.0.0_r21    
@@ -148,7 +149,11 @@ CONFIG_MODULE_SIG=y
 #CONFIG_MODULE_SIG_SHA512=y
 #CONFIG_BLK_DEV_BSG is not set
 ```
-对build/build.sh编译脚本做如下修改，不然编译会报错。    
+对build/build.sh编译脚本做如下修改，不然编译会报错。 
+make b1c1_defconfig    
+make    
+
+
 修改/mnt/pixel3/pixel3-kernel/msm/build/build.sh    
 在这之前msm中没有build文件夹，只好repo sync 一次    
 ```
@@ -192,3 +197,12 @@ static int check_modinfo(struct module *mod, struct load_info *info, int flags)
 = Set default KERNEL_DIR: /mnt/pixel3/pixel3-kernel/msm
 /mnt/pixel3/pixel3-kernel/msm/build/build.config: line 5: /mnt/pixel3/pixel3-kernel/msm/build/private/msm-google/build.config.common.clang: No such file or directory
 ```
+
+将arch/arm64/boot/Image.lz4-dtb文件复制到AOSP的device/google/crosshatch-kernel目录下，然后在AOSP源码根目录下执行 make bootimage 生成最终的boot.img 。    
+或者说将内核源码out/android-msm-crosshatch-4.9/dist目录下的Image.lz4-dtb拷贝到Android9系统源码的device/google/crosshatch-kernel目录下     
+
+source build/envsetup.sh   
+lunch aosp_blueline-userdebug    
+make bootimage    
+fastboot flash boot boot.img    
+adb shell后 cat /proc/version    
