@@ -163,7 +163,21 @@ FAILED (remote: 'Partition should be flashed in fastbootd')
 
 again：
 -----
-
+```
+root@ca01:/mnt/sdb/aosp-pixels/out/target/product/blueline# fastboot flashall -w
+--------------------------------------------
+Bootloader Version...: b1c1-0.1-5343672
+Baseband Version.....: g845-00017-190312-B-5369743
+Serial Number........: 89AX07GLX
+--------------------------------------------
+checking product...
+OKAY [  0.060s]
+sending 'boot' (65536 KB)...
+OKAY [  2.210s]
+writing 'boot'...
+FAILED (remote: Failed to write to partition Not Found)
+finished. total time: 2.876s
+```
 
 
 5.下载内核代码  
