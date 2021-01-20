@@ -134,7 +134,7 @@ PQ1A.181205.006	android-9.0.0_r21	Pie	Pixel 3 XL、Pixel 3	2018-12-05
 https://developers.google.com/android/drivers      
 Pixel 3 binaries for Android 9.0.0 (PQ1A.181205.006)     
 Hardware Component 	Company 	Download 	SHA-256 Checksum     
-Vendor image 	Google 	Link 	3d0e9929ae29c7d87dd4790fe5223429197fcdd36bf3f56e687fe37802a9c1eb     
+Vendor image 	      Google 	Link 	3d0e9929ae29c7d87dd4790fe5223429197fcdd36bf3f56e687fe37802a9c1eb     
 GPS, Audio, Camera, Gestures, Graphics, DRM, Video, Sensors 	Qualcomm 	Link 	9db7f8c312ece6833c623e2d75f4bcc1036c521279a3f4b55e20b1819cc00113      
 所以     
 wget https://dl.google.com/dl/android/aosp/google_devices-blueline-pq1a.181205.006-5a3e2737.tgz     
@@ -281,8 +281,8 @@ again：
 -----
 该方法编译出错，尝试官网构建内核的方法       
 https://source.android.com/setup/build/building-kernels      
-Pixel 3 (blueline)         AOSP 树中的二进制文件路径              Repo 分支       
-Pixel 3 XL (crosshatch)	   device/google/crosshatch-kernel	   android-msm-crosshatch-4.9-android11     
+Pixel 3 (blueline)            AOSP 树中的二进制文件路径              Repo 分支       
+Pixel 3 XL (crosshatch)	      device/google/crosshatch-kernel	    android-msm-crosshatch-4.9-android11     
 git checkout remotes/origin/android-msm-crosshatch-4.9-android11    
 发现没有build/build.sh, repo sync android-msm-crosshatch-4.9-pie-qpr2    
 ```
