@@ -138,3 +138,26 @@ make b1c1_defconfig
 /mnt/sdb/android-kernel/build/_setup_env.sh: line 46: realpath: command not found
 ```
 apt install realpath    
+
+build/build.sh
+```
+/mnt/sdb/android-kernel/msm
+========================================================
+ Copying modules files
+  lib/modules/4.9.124_audio/kernel/drivers/input/touchscreen/stm/ftm5.ko
+  lib/modules/4.9.124_audio/kernel/drivers/input/touchscreen/sec_ts/sec_touch.ko
+  lib/modules/4.9.124_audio/kernel/techpack/audio/asoc/codecs/wcd-core.ko
+  lib/modules/4.9.124_audio/kernel/techpack/audio/asoc/codecs/wcd934x/snd-soc-wcd934x.ko
+  lib/modules/4.9.124_audio/kernel/techpack/audio/asoc/codecs/snd-soc-wcd-spi.ko
+  lib/modules/4.9.124_audio/kernel/techpack/audio/asoc/codecs/snd-soc-wcd9xxx.ko
+  lib/modules/4.9.124_audio/kernel/techpack/audio/asoc/codecs/snd-soc-cs35l36.ko
+  lib/modules/4.9.124_audio/kernel/techpack/audio/asoc/snd-soc-sdm845.ko
+  lib/modules/4.9.124_audio/kernel/techpack/audio/asoc/snd-soc-sdm845-max98927.ko
+  lib/modules/4.9.124_audio/kernel/techpack/audio/ipc/wcd-dsp-glink.ko
+  lib/modules/4.9.124_audio/kernel/techpack/audio/soc/pinctrl-wcd.ko
+  lib/modules/4.9.124_audio/extra/wlan.ko
+========================================================
+ Copying unstripped module files for debugging purposes (not loaded on device)
+========================================================
+ Files copied to /mnt/sdb/android-kernel/msm/out/android-msm-bluecross-4.9/dist
+```
