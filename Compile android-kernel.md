@@ -137,4 +137,4 @@ make b1c1_defconfig
 ```
 /mnt/sdb/android-kernel/build/_setup_env.sh: line 46: realpath: command not found
 ```
-回到上一层repo sync的目录，而不是msm那一层执行build/build.sh     
+apt install realpath    
