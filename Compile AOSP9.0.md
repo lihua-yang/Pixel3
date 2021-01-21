@@ -19,12 +19,14 @@ Pixel3 代号blueline，编译配置lunch aosp_bluebline-userdebug，内核代�
 repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-9.0.0_r21   
 
 
-1.清华的repo设置：     
+1.清华的repo设置：
+```
     mkdir ~/bin    
     PATH=~/bin:$PATH     
     curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o repo    
     chmod +x repo    
     export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'    
+```
 2.ustc的repo设置
 
 
