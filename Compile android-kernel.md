@@ -139,7 +139,13 @@ make b1c1_defconfig
 ```
 apt install realpath    
 
+注释掉build.sh中的一行
+```
+#change by ylh
+#    eval ${POST_DEFCONFIG_CMDS}
+    set +x
 build/build.sh
+```
 ```
 /mnt/sdb/android-kernel/msm
 ========================================================
