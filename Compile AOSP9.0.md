@@ -16,7 +16,18 @@ Pixel3 代号blueline，编译配置lunch aosp_bluebline-userdebug，内核代�
 可供参考的pixel XL编译经验： https://blog.csdn.net/zz531987464/article/details/94163954    
 
 //repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-9.0.0_r21 --no-repo-verify --repo-branch=stable    
-repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-9.0.0_r21    
+repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-9.0.0_r21   
+
+
+1.清华的repo设置：     
+    mkdir ~/bin    
+    PATH=~/bin:$PATH     
+    curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o repo    
+    chmod +x repo    
+    export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/'    
+2.ustc的repo设置
+
+
 //清华的源不可用，换用中科院的源ustc    
 repo init -u git://mirrors.ustc.edu.cn/aosp/platform/manifest -b android-9.0.0_r21     
 repo sync -j32     
