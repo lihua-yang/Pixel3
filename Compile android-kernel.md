@@ -127,6 +127,7 @@ make: *** [Makefile:1196: prepare-compiler-check] Error 1
 ```
 将prebuilts下/bin文件夹下的交叉编译工具拷贝到msm下    
 export ARCH=arm64    
+export CC=clang    
 export CROSS_COMPILE=aarch64-linux-android-    
 export CROSS_COMPILE_ARM32=arm-linux-androideabi-    
 make b1c1_defconfig   
