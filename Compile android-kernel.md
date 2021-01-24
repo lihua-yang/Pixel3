@@ -179,6 +179,7 @@ cd out/target/product/blueline
 fastboot flashall -w    
 adb shell后 cat /proc/version   
 
+编译的镜像用的是/mnt/sdb/pixel-kernel/private/msm-google/fs/f2fs下面的文件    
 make bootimage  
 fastboot flash boot boot.img    
 
