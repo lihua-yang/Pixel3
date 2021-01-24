@@ -100,16 +100,8 @@ static int check_modinfo(struct module *mod, struct load_info *info, int flags)
 = Set default KERNEL_DIR: /mnt/pixel3/pixel3-kernel/msm
 /mnt/pixel3/pixel3-kernel/msm/build/build.config: line 5: /mnt/pixel3/pixel3-kernel/msm/build/private/msm-google/build.config.common.clang: No such file or directory
 ```
-
-将arch/arm64/boot/Image.lz4-dtb文件复制到AOSP的device/google/crosshatch-kernel目录下，然后在AOSP源码根目录下执行 make bootimage 生成最终的boot.img 。    
-或者说将内核源码out/android-msm-crosshatch-4.9/dist目录下的Image.lz4-dtb拷贝到Android9系统源码的device/google/crosshatch-kernel目录下     
-
-source build/envsetup.sh   
-lunch aosp_blueline-userdebug    
-make bootimage    
-make BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE=f2fs TARGET_USERIMAGES_USE_F2FS=true -j32    
-fastboot flash boot boot.img    
-adb shell后 cat /proc/version    
+缺少build.config文件，推测是repo sync不完全     
+ 
 
 报错2：
 ```
@@ -173,4 +165,14 @@ build/build.sh
 ========================================================
  Files copied to /mnt/sdb/android-kernel/msm/out/android-msm-bluecross-4.9/dist
 ```
-该方法没有用到fs/f2fs中的文件    
+该方法没有用到fs/f2fs中的文件   
+将arch/arm64/boot/Image.lz4-dtb文件复制到AOSP的device/google/crosshatch-kernel目录下，然后在AOSP源码根目录下执行 make bootimage 生成最终的boot.img 。    
+或者说将内核源码out/android-msm-crosshatch-4.9/dist目录下的Image.lz4-dtb拷贝到Android9系统源码的device/google/crosshatch-kernel目录下     
+
+source build/envsetup.sh   
+lunch aosp_blueline-userdebug     
+make BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE=f2fs TARGET_USERIMAGES_USE_F2FS=true -j32    
+adb shell后 cat /proc/version   
+
+make bootimage  
+fastboot flash boot boot.img    
