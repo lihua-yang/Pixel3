@@ -27,6 +27,7 @@ export CC=clang
 export CROSS_COMPILE=aarch64-linux-android-   
 export CROSS_COMPILE_ARM32=arm-linux-androideabi-   
 
+将内核源码out/android-msm-crosshatch-4.9/dist目录下的Image.lz4-dtb拷贝到Android9系统源码的device/google/crosshatch-kernel目录下  
 source build/envsetup.sh    
 lunch aosp_blueline-userdebug   
 make BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE=f2fs TARGET_USERIMAGES_USE_F2FS=true -j32     
