@@ -5,7 +5,7 @@ cd pixel3-kernel
 repo init -u https://aosp.tuna.tsinghua.edu.cn/kernel/manifest -b android-msm-crosshatch-4.9-pie-qpr2    
 repo sync -j32    
 我的做法是，在https://android.googlesource.com/kernel/msm-extra/+refs 下载android-msm-crosshatch-4.9-pie-qpr2压缩包，并用xftp传输到大机房机器上    
-上面这条失败了，换了一个方法    
+上面这条是方法之一     
 参考该网站 https://blog.csdn.net/zz531987464/article/details/94163954      
 git clone https://aosp.tuna.tsinghua.edu.cn/kernel/msm.git     
 cd msm     
