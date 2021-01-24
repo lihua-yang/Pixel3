@@ -107,6 +107,7 @@ static int check_modinfo(struct module *mod, struct load_info *info, int flags)
 source build/envsetup.sh   
 lunch aosp_blueline-userdebug    
 make bootimage    
+make BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE=f2fs TARGET_USERIMAGES_USE_F2FS=true -j32    
 fastboot flash boot boot.img    
 adb shell后 cat /proc/version    
 
@@ -132,7 +133,11 @@ export CROSS_COMPILE=aarch64-linux-android-
 export CROSS_COMPILE_ARM32=arm-linux-androideabi-    
 make b1c1_defconfig   
 
-
+vim /mnt/sdb/aosp-pixels/device/google/crosshatch/blueline/AndroidBoard.mk    
+```
+#add by ylh
+TARGET_KERNEL_CLANG_COMPILE := true
+```
 
 报错4：
 ```
@@ -168,3 +173,4 @@ build/build.sh
 ========================================================
  Files copied to /mnt/sdb/android-kernel/msm/out/android-msm-bluecross-4.9/dist
 ```
+该方法没有用到fs/f2fs中的文件    
